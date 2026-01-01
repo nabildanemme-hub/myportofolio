@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portfolio | Muhammad Nabil</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    body {
+      background: #0a192f;
+      color: #ccd6f6;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: auto;
+      padding: 60px 20px;
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 60px;
+    }
+
+    header h1 {
+      font-size: 42px;
+      color: #64ffda;
+    }
+
+    header p {
+      color: #8892b0;
+      margin-top: 10px;
+      font-size: 18px;
+    }
+
+    section {
+      margin-bottom: 60px;
+    }
+
+    h2 {
+      font-size: 28px;
+      margin-bottom: 25px;
+      color: #64ffda;
+    }
+
+    /* SKILL BAR */
+    .skill {
+      margin-bottom: 22px;
+    }
+
+    .skill span {
+      display: block;
+      margin-bottom: 6px;
+    }
+
+    .bar {
+      background: #112240;
+      border-radius: 20px;
+      overflow: hidden;
+    }
+
+    .bar-fill {
+      height: 14px;
+      width: 0;
+      border-radius: 20px;
+      background: linear-gradient(90deg, #64ffda, #3b82f6);
+      transition: width 1.5s ease;
+    }
+
+    /* PORTFOLIO CARD */
+    .card {
+      background: #112240;
+      padding: 25px;
+      border-radius: 14px;
+      transition: transform 0.3s;
+    }
+
+    .card:hover {
+      transform: translateY(-6px);
+    }
+
+    .card h3 {
+      margin-bottom: 10px;
+      color: #e6f1ff;
+    }
+
+    .card p {
+      color: #8892b0;
+      margin-bottom: 15px;
+    }
+
+    .card a {
+      color: #64ffda;
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    /* WHATSAPP BUTTON */
+    .wa-button {
+      position: fixed;
+      bottom: 25px;
+      right: 25px;
+      background: #25D366;
+      color: white;
+      padding: 14px 20px;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 600;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+      transition: transform 0.3s;
+      z-index: 999;
+    }
+
+    .wa-button:hover {
+      transform: scale(1.05);
+    }
+
+    footer {
+      text-align: center;
+      padding: 30px 0;
+      color: #8892b0;
+      font-size: 14px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="container">
+
+    <!-- HERO -->
+    <header>
+      <h1>Muhammad Nabil</h1>
+      <p>Web Developer • Landing Page • Website Sederhana & Efektif</p>
+    </header>
+
+    <!-- SKILLS -->
+    <section>
+      <h2>Skills</h2>
+
+      <div class="skill">
+        <span>HTML & CSS (60%)</span>
+        <div class="bar">
+          <div class="bar-fill" data-width="60%"></div>
+        </div>
+      </div>
+
+      <div class="skill">
+        <span>WordPress (70%)</span>
+        <div class="bar">
+          <div class="bar-fill" data-width="70%"></div>
+        </div>
+      </div>
+
+      <div class="skill">
+        <span>Google Sites (83%)</span>
+        <div class="bar">
+          <div class="bar-fill" data-width="83%"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PORTFOLIO -->
+    <section>
+      <h2>Portfolio</h2>
+
+      <div class="card">
+        <h3>CariKost Web</h3>
+        <p>
+          Website pencarian kost sederhana berbasis Google Sites,
+          fokus pada kemudahan penggunaan dan akses cepat.
+        </p>
+        <a href="https://sites.google.com/view/carikostweb/home" target="_blank">
+          Lihat Website →
+        </a>
+      </div>
+    </section>
+
+  </div>
+
+  <!-- WHATSAPP FLOATING BUTTON -->
+  <a 
+    href="https://wa.me/6280000000000?text=Halo%20saya%20tertarik%20dengan%20jasa%20website%20Anda"
+    target="_blank"
+    class="wa-button">
+    WhatsApp
+  </a>
+
+  <footer>
+    © 2026 Muhammad Nabil. All rights reserved.
+  </footer>
+
+  <!-- ANIMASI SKILL BAR -->
+  <script>
+    window.addEventListener('load', () => {
+      document.querySelectorAll('.bar-fill').forEach(bar => {
+        bar.style.width = bar.getAttribute('data-width');
+      });
+    });
+  </script>
+
+</body>
+</html>
