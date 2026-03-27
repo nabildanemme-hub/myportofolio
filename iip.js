@@ -1,0 +1,80 @@
+const themeToggle = document.getElementById("themeToggle");
+const themeIcon = document.querySelector(".theme-icon");
+const themeText = document.querySelector(".theme-text");
+const themeColorMeta = document.querySelector('meta[name="theme-color"]');
+
+function setTheme(theme) {
+  if (theme === "dark") {
+    document.body.setAttribute("data-theme", "dark");
+    themeIcon.textContent = "☾";
+    themeText.textContent = "Dark";
+    themeColorMeta.setAttribute("content", "#0c1220");
+  } else {
+    document.body.removeAttribute("data-theme");
+    themeIcon.textContent = "☀";
+    themeText.textContent = "Light";
+    themeColorMeta.setAttribute("content", "#f5f7fb");
+  }
+
+  localStorage.setItem("theme", theme);
+}
+
+const savedTheme = localStorage.getItem("theme");
+if (savedTheme) {
+  setTheme(savedTheme);
+} else {
+  const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+  setTheme(prefersDark ? "dark" : "light");
+}
+
+themeToggle.addEventListener("click", () => {
+  const isDark = document.body.getAttribute("data-theme") === "dark";
+  setTheme(isDark ? "light" : "dark");
+});
+
+const elements = document.querySelectorAll(".section, .project-card");
+
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add("fade-in", "show");
+    }
+  });
+});
+
+elements.forEach(el => observer.observe(el));
+
+const modal = document.getElementById("modal");
+const modalTitle = document.getElementById("modal-title");
+const modalDesc = document.getElementById("modal-desc");
+const closeBtn = document.querySelector(".close");
+
+const projectData = {
+  cashflow: {
+    title: "Website Cash Flow",
+    desc: "Website ini digunakan untuk mencatat pemasukan dan pengeluaran harian agar keuangan lebih teratur. Dibuat menggunakan HTML, CSS, dan JavaScript."
+  },
+  gang: {
+    title: "Website Gang Modern",
+    desc: "Website ini dibuat untuk menampilkan informasi lingkungan dengan desain modern dan sederhana agar mudah diakses semua orang."
+  }
+};
+
+document.querySelectorAll(".detail-btn").forEach(btn => {
+  btn.addEventListener("click", () => {
+    const key = btn.getAttribute("data-project");
+    modalTitle.textContent = projectData[key].title;
+    modalDesc.textContent = projectData[key].desc;
+    modal.style.display = "flex";
+  });
+});
+
+closeBtn.addEventListener("click", () => {
+  modal.style.display = "none";
+});
+
+window.addEventListener("click", (e) => {
+  if (e.target === modal) {
+    modal.style.display = "none";
+  }
+});

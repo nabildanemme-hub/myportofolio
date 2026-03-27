@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#f5f7fb" />
+  <title>Portofolio - Muhammad Nabil Al Ma'ruf</title>
+  <link rel="stylesheet" href="nyo.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+  <div class="page">
+    <header class="topbar">
+      <a href="#home" class="brand" aria-label="Beranda">
+        <span class="brand-badge">N</span>
+        <span class="brand-text">
+          <strong>Nabil</strong>
+          <small>Portfolio</small>
+        </span>
+      </a>
+
+      <button id="themeToggle" class="theme-btn" type="button" aria-label="Ganti tema">
+        <span class="theme-icon" aria-hidden="true">☀</span>
+        <span class="theme-text">Light</span>
+      </button>
+    </header>
+
+    <main>
+      <section id="home" class="hero">
+        <div class="hero-card">
+          <p class="eyebrow">Portofolio Profesional</p>
+          <h1>Hai, saya Muhammad Nabil Al Ma'ruf.</h1>
+          <p class="hero-desc">
+            Saya seorang santri Pesantren Wisata Annur 2 Al Murtadlo, Malang, Jawa Timur.
+            Saya tertarik dengan dunia per-kodingan dan sedang belajar web development serta aplikasi Android.
+          </p>
+
+          <div class="hero-actions">
+            <a href="#projects" class="btn primary">Lihat Proyek</a>
+            <a href="#contact" class="btn secondary">Kontak Saya</a>
+            <a href="CVKU.pdf" class="btn secondary" target="_blank" rel="noopener noreferrer">Lihat CV</a>
+  
+          </div>
+        </div>
+
+        <div class="profile-card">
+          <div class="avatar">
+            <img src="aku.jpeg" alt="Foto Nabil">
+          </div>
+          <h2>Muhammad Nabil Al Ma'ruf</h2>
+          <p>Santri Web & Android Developer Pemula</p>
+
+          <div class="stats">
+            <div>
+              <strong>2+</strong>
+              <span>Proyek</span>
+            </div>
+            <div>
+              <strong>2</strong>
+              <span>Bidang Belajar</span>
+            </div>
+            <div>
+              <strong>100%</strong>
+              <span>Mobile Friendly</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section about">
+        <div class="section-head">
+          <p class="eyebrow">Tentang Saya</p>
+          <h2>Belajar serius, tampil sederhana.</h2>
+        </div>
+
+        <div class="content-card">
+          <p>
+            Saya fokus membangun web yang rapi, ringan, dan mudah dipahami.
+            Gaya desain yang saya suka adalah profesional, clean, dan nyaman dipakai semua usia.
+          </p>
+        </div>
+      </section>
+
+      <section id="projects" class="section">
+        <div class="section-head">
+          <p class="eyebrow">Proyek</p>
+          <h2>Beberapa karya yang sedang saya kembangkan</h2>
+        </div>
+
+        <div class="grid">
+          <article class="project-card">
+            <h3>Website Gang Digital</h3>
+            <p>Website Gang Digital Versi Skala Kecil.</p>
+
+            <div class="project-actions">
+                <button class="btn secondary detail-btn" data-project="gang">Detail</button>
+                    <a href="https://nabildanemme-hub.github.io/gang-kejawan-putih-tambak-IIA/index.html" target="_blank" class="btn primary">Kunjungi</a>
+            </div>
+                </article>
+
+          <article class="project-card">
+            <h3>Website Cash Flow</h3>
+            <p>Aplikasi sederhana untuk mencatat pemasukan dan pengeluaran.</p>
+
+  <div class="project-actions">
+        <button class="btn secondary detail-btn" data-project="cashflow">Detail</button>
+        <a href="https://link-web-kamu.com" target="_blank" class="btn primary">Kunjungi</a>
+    </div>
+    </article>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="section-head">
+          <p class="eyebrow">Keahlian</p>
+          <h2>Hal yang sedang saya pelajari</h2>
+        </div>
+
+        <div class="chips">
+          <span>HTML</span>
+          <span>CSS</span>
+          <span>JavaScript</span>
+          <span>Android Development</span>
+        </div>
+      </section>
+
+      <section id="contact" class="section contact">
+        <div class="section-head">
+          <p class="eyebrow">Kontak</p>
+          <h2>Hubungi saya</h2>
+        </div>
+
+        <div class="content-card contact-card">
+  <p>Silakan hubungi saya lewat email atau media sosial.</p>
+
+  <div class="contact-icons">
+    <a href="mailto:nabildanemme@gmail.com" target="_blank" aria-label="Email">
+      <i class="fa-solid fa-envelope"></i>
+    </a>
+
+    <a href="https://wa.me/6282332569247" target="_blank" aria-label="WhatsApp">
+      <i class="fa-brands fa-whatsapp"></i>
+    </a>
+  </div>
+</div>
+
+      </section>
+    </main>
+
+    <footer class="footer">
+      <p>© 2026 Muhammad Nabil Al Ma'ruf. Semua hak dilindungi.</p>
+    </footer>
+  </div>
+
+    <div id="modal" class="modal">
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <h2 id="modal-title"></h2>
+    <p id="modal-desc"></p>
+  </div>
+</div>
+
+  <script src="iip.js"></script>
+</body>
+</html>
