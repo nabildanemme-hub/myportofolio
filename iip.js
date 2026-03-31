@@ -58,6 +58,14 @@ const projectData = {
     title: "Website Gang Modern",
     desc: "Website ini dibuat untuk menampilkan informasi lingkungan dengan desain modern dan sederhana agar mudah diakses semua orang."
   }
+ leonathan-porto: {
+    title: "Website Portofolio Leonathan",
+    desc: "Representasi digital dari perjalanan kreatif seorang santri yang bergerak di bidang videografi dan desain grafis. Website ini menampilkan karya visual yang memadukan estetika modern dengan pesan bermakna, dirancang dengan antarmuka yang sederhana namun tetap elegan demi kenyamanan pengguna."
+}
+toko-emme: {
+    title: "Emme Shop",
+    desc: "Toko online gadget pilihan yang mengutamakan kemudahan transaksi. Menampilkan antarmuka yang bersih dan responsif, memudahkan pengguna untuk menemukan perangkat impian mereka kapan saja dan di mana saja."
+}
 };
 
 document.querySelectorAll(".detail-btn").forEach(btn => {
