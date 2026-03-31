@@ -82,3 +82,38 @@ window.addEventListener("click", (e) => {
     modal.style.display = "none";
   }
 });
+
+document.addEventListener("DOMContentLoaded", function() {
+  // 1. Pilih semua elemen utama yang ingin dianimasikan secara otomatis
+  // (Saya pilihkan elemen berukuran sedang-besar agar animasinya tidak terlihat norak)
+  const autoAnimateElements = document.querySelectorAll(`
+    .hero-card, 
+    .profile-card, 
+    .content-card, 
+    .project-card, 
+    .section-head, 
+    .stats div,
+    .contact-icons a
+  `);
+
+  // 2. Buat pengawas (Observer)
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      // Jika elemen masuk ke layar, tambahkan class 'show'
+      if (entry.isIntersecting) {
+        entry.target.classList.add('show');
+        
+        // Opsional: Hentikan pantauan setelah animasi selesai agar tidak berulang & menghemat baterai HP
+        observer.unobserve(entry.target); 
+      }
+    });
+  }, { 
+    threshold: 0.1 // Mulai animasi saat 10% bagian elemen muncul di layar
+  });
+
+  // 3. Tempelkan class 'fade-in' secara otomatis dan mulai pantau
+  autoAnimateElements.forEach((el) => {
+    el.classList.add('fade-in');
+    observer.observe(el);
+  });
+});
