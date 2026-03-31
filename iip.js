@@ -50,10 +50,6 @@ const modalDesc = document.getElementById("modal-desc");
 const closeBtn = document.querySelector(".close");
 
 const projectData = {
-  cashflow: {
-    title: "Website Cash Flow",
-    desc: "Website ini digunakan untuk mencatat pemasukan dan pengeluaran harian agar keuangan lebih teratur. Dibuat menggunakan HTML, CSS, dan JavaScript."
-  },
   gang: {
     title: "Website Gang Modern",
     desc: "Website ini dibuat untuk menampilkan informasi lingkungan dengan desain modern dan sederhana agar mudah diakses semua orang."
