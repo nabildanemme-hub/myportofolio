@@ -430,3 +430,18 @@ a:focus-visible {
   background: var(--primary);
   color: white;
 }
+
+/* Untuk Chrome, Safari, dan Opera */
+.element-class::-webkit-scrollbar {
+  display: none;
+}
+
+/* Untuk Firefox */
+.element-class {
+  scrollbar-width: none;
+}
+
+/* Untuk Internet Explorer dan Edge lama */
+.element-class {
+  -ms-overflow-style: none;
+}
