@@ -1,119 +1,85 @@
-const themeToggle = document.getElementById("themeToggle");
-const themeIcon = document.querySelector(".theme-icon");
-const themeText = document.querySelector(".theme-text");
-const themeColorMeta = document.querySelector('meta[name="theme-color"]');
-
-function setTheme(theme) {
-  if (theme === "dark") {
-    document.body.setAttribute("data-theme", "dark");
-    themeIcon.textContent = "☾";
-    themeText.textContent = "Dark";
-    themeColorMeta.setAttribute("content", "#0c1220");
-  } else {
-    document.body.removeAttribute("data-theme");
-    themeIcon.textContent = "☀";
-    themeText.textContent = "Light";
-    themeColorMeta.setAttribute("content", "#f5f7fb");
-  }
-
-  localStorage.setItem("theme", theme);
-}
-
-const savedTheme = localStorage.getItem("theme");
-if (savedTheme) {
-  setTheme(savedTheme);
-} else {
-  const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
-  setTheme(prefersDark ? "dark" : "light");
-}
-
-themeToggle.addEventListener("click", () => {
-  const isDark = document.body.getAttribute("data-theme") === "dark";
-  setTheme(isDark ? "light" : "dark");
-});
-
-const elements = document.querySelectorAll(".section, .project-card");
-
-const observer = new IntersectionObserver(entries => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add("fade-in", "show");
-    }
-  });
-});
-
-elements.forEach(el => observer.observe(el));
-
-const modal = document.getElementById("modal");
-const modalTitle = document.getElementById("modal-title");
-const modalDesc = document.getElementById("modal-desc");
-const closeBtn = document.querySelector(".close");
-
+// Data Proyek
 const projectData = {
   gang: {
     title: "Website Gang Modern",
-    desc: "Website ini dibuat untuk menampilkan informasi lingkungan dengan desain modern dan sederhana agar mudah diakses semua orang."
+    desc: "Website ini dibuat untuk menampilkan informasi lingkungan dengan desain modern dan sederhana."
   },
   leonathanporto: {
     title: "Website Portofolio Leonathan",
-    desc: "Representasi digital dari perjalanan kreatif seorang santri yang bergerak di bidang videografi dan desain grafis. Website ini menampilkan karya visual yang memadukan estetika modern dengan pesan bermakna, dirancang dengan antarmuka yang sederhana namun tetap elegan demi kenyamanan pengguna."
+    desc: "Representasi digital dari perjalanan kreatif di bidang videografi dan desain grafis."
   },
   tokoemme: {
     title: "Emme Shop",
-    desc: "Toko online gadget pilihan yang mengutamakan kemudahan transaksi. Menampilkan antarmuka yang bersih dan responsif, memudahkan pengguna untuk menemukan perangkat impian mereka kapan saja dan di mana saja."
+    desc: "Toko online gadget pilihan yang mengutamakan kemudahan transaksi."
   }
 };
 
-document.querySelectorAll(".detail-btn").forEach(btn => {
-  btn.addEventListener("click", () => {
-    const key = btn.getAttribute("data-project");
-    modalTitle.textContent = projectData[key].title;
-    modalDesc.textContent = projectData[key].desc;
-    modal.style.display = "flex";
-  });
-});
+document.addEventListener("DOMContentLoaded", () => {
+  // --- Fitur Dark Mode ---
+  const themeToggle = document.getElementById("themeToggle");
+  const themeIcon = document.querySelector(".theme-icon");
+  const themeText = document.querySelector(".theme-text");
+  const themeColorMeta = document.querySelector('meta[name="theme-color"]');
 
-closeBtn.addEventListener("click", () => {
-  modal.style.display = "none";
-});
-
-window.addEventListener("click", (e) => {
-  if (e.target === modal) {
-    modal.style.display = "none";
+  function setTheme(theme) {
+    if (theme === "dark") {
+      document.body.setAttribute("data-theme", "dark");
+      if (themeIcon) themeIcon.textContent = "☾";
+      if (themeText) themeText.textContent = "Dark";
+      if (themeColorMeta) themeColorMeta.setAttribute("content", "#0c1220");
+    } else {
+      document.body.removeAttribute("data-theme");
+      if (themeIcon) themeIcon.textContent = "☀";
+      if (themeText) themeText.textContent = "Light";
+      if (themeColorMeta) themeColorMeta.setAttribute("content", "#f5f7fb");
+    }
+    localStorage.setItem("theme", theme);
   }
-});
 
-document.addEventListener("DOMContentLoaded", function() {
-  // 1. Pilih semua elemen utama yang ingin dianimasikan secara otomatis
-  // (Saya pilihkan elemen berukuran sedang-besar agar animasinya tidak terlihat norak)
-  const autoAnimateElements = document.querySelectorAll(`
-    .hero-card, 
-    .profile-card, 
-    .content-card, 
-    .project-card, 
-    .section-head, 
-    .stats div,
-    .contact-icons a
-  `);
+  const savedTheme = localStorage.getItem("theme") || 
+                     (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+  setTheme(savedTheme);
 
-  // 2. Buat pengawas (Observer)
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach((entry) => {
-      // Jika elemen masuk ke layar, tambahkan class 'show'
+  themeToggle?.addEventListener("click", () => {
+    const isDark = document.body.getAttribute("data-theme") === "dark";
+    setTheme(isDark ? "light" : "dark");
+  });
+
+  // --- Animasi Scroll (Intersection Observer) ---
+  const scrollObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
       if (entry.isIntersecting) {
-        entry.target.classList.add('show');
-        
-        // Opsional: Hentikan pantauan setelah animasi selesai agar tidak berulang & menghemat baterai HP
-        observer.unobserve(entry.target); 
+        entry.target.classList.add("show");
+        scrollObserver.unobserve(entry.target); // Hanya animasi sekali
       }
     });
-  }, { 
-    threshold: 0.1 // Mulai animasi saat 10% bagian elemen muncul di layar
+  }, { threshold: 0.1 });
+
+  // Gabungkan semua elemen yang ingin dianimasikan
+  const animateMe = document.querySelectorAll(".section, .project-card, .hero-card, .profile-card, .content-card");
+  animateMe.forEach(el => {
+    el.classList.add("fade-in");
+    scrollObserver.observe(el);
   });
 
-  // 3. Tempelkan class 'fade-in' secara otomatis dan mulai pantau
-  autoAnimateElements.forEach((el) => {
-    el.classList.add('fade-in');
-    observer.observe(el);
+  // --- Fitur Modal ---
+  const modal = document.getElementById("modal");
+  const modalTitle = document.getElementById("modal-title");
+  const modalDesc = document.getElementById("modal-desc");
+  const closeBtn = document.querySelector(".close");
+
+  document.querySelectorAll(".detail-btn").forEach(btn => {
+    btn.addEventListener("click", () => {
+      const key = btn.getAttribute("data-project");
+      if (projectData[key]) {
+        modalTitle.textContent = projectData[key].title;
+        modalDesc.textContent = projectData[key].desc;
+        modal.style.display = "flex";
+      }
+    });
   });
+
+  const closeModal = () => modal.style.display = "none";
+  closeBtn?.addEventListener("click", closeModal);
+  window.addEventListener("click", (e) => { if (e.target === modal) closeModal(); });
 });
