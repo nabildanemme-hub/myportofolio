@@ -445,3 +445,22 @@ a:focus-visible {
 .element-class {
   -ms-overflow-style: none;
 }
+
+/* Styling gambar pratinjau di dalam modal */
+.modal-preview-img {
+  width: 100%;
+  height: auto;
+  max-height: 250px;       /* Batasi tinggi maksimal agar tidak kepanjangan */
+  object-fit: cover;       /* Memotong gambar secara rapi jika rasionya beda */
+  border-radius: 8px;
+  margin-bottom: 15px;
+  display: block;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  cursor: pointer;         /* Mengubah kursor jadi bentuk tangan */
+}
+
+/* Efek hover lembut saat gambar didekati kursor */
+.modal-preview-img:hover {
+  transform: scale(1.02);  /* Gambar agak membesar sedikit */
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2); /* Efek bayangan gantung */
+}
